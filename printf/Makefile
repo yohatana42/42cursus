@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yohatana <yohatana@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/23 15:18:57 by yohatana          #+#    #+#              #
-#    Updated: 2024/06/01 15:27:35 by yohatana         ###   ########.fr        #
+#    Updated: 2024/12/17 21:16:04 by yohatana         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,10 +29,15 @@ CCFLAGS		= -Wall -Wextra -Werror
 AR			= ar rcs
 RM			= rm -f
 
+.DEFAULT:	all
+
 all:		$(NAME)
 
 ${NAME}:	${OBJS}
 			${AR} ${NAME} ${OBJS}
+
+%.o: %.c
+		$(CC) $(CCFLAGS) -c $< -o $@
 
 clean:
 			${RM} $(OBJS)
